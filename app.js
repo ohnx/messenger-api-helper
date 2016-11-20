@@ -222,7 +222,7 @@ function receivedMessage(event) {
   var timeOfMessage = event.timestamp;
   var message = event.message;
 
-  console.log(timeOfMessage + ":" + JSON.stringify(message));
+  console.log((timeOfMessage / 1000 | 0).toString() + " >> " + JSON.stringify(message));
 
   var isEcho = message.is_echo;
   var messageId = message.mid;
@@ -495,8 +495,6 @@ module.exports.sendReadReceipt = sendReadReceipt;
  *
  */
 var sendTypingOn = function(recipientId) {
-  console.log("Turning typing indicator on");
-
   var messageData = {
     recipient: {
       id: recipientId
@@ -513,8 +511,6 @@ module.exports.sendTypingOn = sendTypingOn;
  *
  */
 var sendTypingOff = function(recipientId) {
-  console.log("Turning typing indicator off");
-
   var messageData = {
     recipient: {
       id: recipientId
@@ -550,14 +546,10 @@ var callSendAPI = function(messageData) {
       var messageId = body.message_id;
 
       if (messageId) {
-        console.log("Successfully sent message with id %s to recipient %s", 
-          messageId, recipientId);
-      } else {
-      console.log("Successfully called Send API for recipient %s", 
-        recipientId);
+        console.log("%s << %s to u.%s", (Date.now() / 1000 | 0).toString(), messageId, recipientId);
       }
     } else {
-      console.error("Failed calling Send API", response.statusCode, response.statusMessage, body.error);
+      console.error("%s !! Failed calling Send API", (Date.now() / 1000 | 0).toString(), response.statusCode, response.statusMessage, body.error);
     }
   });  
 };
