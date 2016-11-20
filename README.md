@@ -1,15 +1,21 @@
 # messenger-api-helper
 
 This module exposes some functions that allow for sending of messages.
+
+
 It is heavily based on the example app from Facebook Samples here: https://github.com/fbsamples/messenger-platform-samples/tree/master/node
+
+
 A callback for receiving messages is specified during the initialization process; the process is detailed below.
 
 ## Pre-setup
 
+This way may be easier: https://github.com/ohnx/messenger-api-helper/wiki/Config
+
 Follow the Quick start guide to get the configuration information: https://developers.facebook.com/docs/messenger-platform/guides/quick-start  
-**Note** You will not be able to set up the Webhook until the server is running, but for the server to be running, you need to have it configured with certain config values.
+**Note**: You will not be able to set up the Webhook until the server is running, but for the server to be running, you need to have it configured with certain config values.
 You will need to get all the config keys and start the server before setting up the webhook. Instructions as to what config things are needed are available here: https://github.com/fbsamples/messenger-platform-samples/tree/master/node  
-**Warning** They say it takes 10 minutes, but it took me closer to 10 hours (had to set up SSL, including break times, and had MAJOR issues with authkeys).  
+**Warning**: They say it takes 10 minutes, but it took me closer to 10 hours (had to set up SSL, including break times, and had MAJOR issues with authkeys).  
 
 ## Setup
 
@@ -37,7 +43,7 @@ mah.start(callback, 3008);
 - sendFileMessage: send a generic file. Provide it with the recipientID and the HTTP location of the file.
 - sendNormalMessage: send a generic text message. Provide it with the recipientID and the text.
 - sendQuickReply - send a message with quick reply options. Provide it with the recipientID, the text message, and an array of possible replies. The reply text will be the payload. Sample JSON:
-```
+```js
 sendQuickReply(recipientID, "What is your favourite fruit?",
 [{
   "content_type":"text",

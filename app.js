@@ -222,9 +222,7 @@ function receivedMessage(event) {
   var timeOfMessage = event.timestamp;
   var message = event.message;
 
-  console.log("Received message for user %d and page %d at %d with message:", 
-    senderID, recipientID, timeOfMessage);
-  console.log(JSON.stringify(message));
+  console.log(timeOfMessage + ":" + JSON.stringify(message));
 
   var isEcho = message.is_echo;
   var messageId = message.mid;
@@ -243,8 +241,6 @@ function receivedMessage(event) {
     return;
   } else if (quickReply) {
     var quickReplyPayload = quickReply.payload;
-    console.log("Quick reply for message %s with payload %s",
-      messageId, quickReplyPayload);
 
     messageText = quickReply.payload;
   }
@@ -482,8 +478,6 @@ module.exports.sendQuickReply = sendQuickReply;
  *
  */
 var sendReadReceipt = function(recipientId) {
-  console.log("Sending a read receipt to mark message as seen");
-
   var messageData = {
     recipient: {
       id: recipientId
