@@ -1,5 +1,5 @@
 /*
- * Portions copyright 2016-present, Facebook, Inc.
+ * Copyright 2016-present, Facebook, Inc.
  * All rights reserved.
  *
  * This source code is licensed under the license found in the
@@ -461,13 +461,13 @@ module.exports.sendNormalMessage = sendNormalMessage;
  * Send a message with Quick Reply buttons.
  *
  */
-var sendQuickReply = function(recipientId, replies) {
+var sendQuickReply = function(recipientId, message, replies) {
   var messageData = {
     recipient: {
       id: recipientId
     },
     message: {
-      text: "What's your favorite movie genre?",
+      text: message,
       quick_replies: replies
     }
   };
